@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot and Thymeleaf example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h3>Spring Boot and Thymeleaf example</h3>
+
+    <table class="table  table-bordered">
+
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+
+        </tr>
+        <tr th:each="contact : ${names}">
+            <td th:text="${contact.name}"></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h3>Add New Contact</h3>
+    <form action="#" th:action="@{/}" th:object="${contact}" method="post">
+        <table>
+            <tr>
+                <td>Name</td>
+            </tr>
+            <tr>
+                <td><textarea rows="7" cols="90" th:field="*{name}"/></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">textIn error message</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" style="float: right">Submit post</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
