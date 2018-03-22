@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,6 +19,7 @@ public class MyController {
     @Autowired
     MyService service;
 
+    //home page
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model)
     {
@@ -26,14 +28,14 @@ public class MyController {
         return "index"; // index is the page name
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+//     add new contact
+    @RequestMapping(value = "/contact/new", method = RequestMethod.POST)
     public String addNewPost(@Valid Contact contact, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "index";
         }
-        // do work here ie. sort
-        List<Contact>  contacts = service.getNames();
-        model.addAttribute("names", contacts); //data on page
-        return "index"; // index is the page name
+        // do work here
+
+        return "redirect:/"; //redirect to homepage
     }
 }
