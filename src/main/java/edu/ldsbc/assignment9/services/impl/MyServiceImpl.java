@@ -15,12 +15,14 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
-    public List<Contact> getNames() {
-        List<Contact> nameList = new ArrayList<>();
-        nameList.add(new Contact("lori","801-294-3553"));
-        nameList.add(new Contact("jim","765-123-5555"));
-        nameList.add(new Contact("scott", "956-343-1234"));
-
-        return nameList;
+    public List<Contact> getContacts() {
+        return DataRepo.getInstance().getContactList();
     }
+
+    @Override
+    public void addContact(Contact contact) {
+        DataRepo.getInstance().getContactList().add(contact);
+    }
+
+
 }

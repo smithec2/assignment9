@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface MyService {
      String getName();
-     List<Contact> getNames();
+     List<Contact> getContacts();
+
+    void addContact(Contact contact);
 }

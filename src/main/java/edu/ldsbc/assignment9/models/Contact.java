@@ -3,10 +3,12 @@ package edu.ldsbc.assignment9.models;
 public class Contact {
     private String name;
     private String phone;
+    private String city;
 
-    public Contact(String name, String phone) {
+    public Contact(String name, String phone, String city) {
         this.name = name;
         this.phone = phone;
+        this.city = city;
     }
 
     public String getName() {
@@ -23,5 +25,13 @@ public class Contact {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

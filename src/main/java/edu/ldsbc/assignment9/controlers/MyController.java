@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,12 +19,19 @@ public class MyController {
     MyService service;
 
     //home page
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/robert", method = RequestMethod.GET)
     public String index(Model model)
     {
-        List<Contact>  contacts = service.getNames();
+        List<Contact>  contacts = service.getContacts();
         model.addAttribute("names", contacts); //data on page
         return "index"; // index is the page name
+    }
+
+    @RequestMapping(value = "/contact/{id}/remove", method = RequestMethod.GET)
+    public String removeContact(String id)
+    {
+     //
+        return "redirect:/robert"; //redirect to homepage
     }
 
 //     add new contact
@@ -35,7 +41,8 @@ public class MyController {
             return "index";
         }
         // do work here
+        service.addContact(contact);
 
-        return "redirect:/"; //redirect to homepage
+        return "redirect:/robert"; //redirect to homepage
     }
 }
